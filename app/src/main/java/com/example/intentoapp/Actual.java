@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import net.mftd313.updatelibrary.UpdateLibrary;
 import net.mftd313.updatelibrary.listeners.UpdateDownloadStartedListener;
@@ -16,7 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-//REQUISITOS
+//REQUISITOS ANDROID +4.2.0
 //Se tiene que trabajar con el link directo de descarga
 //El archivo tiene que ser .apk
 //Se debe de llevar el siguiente formato de versiones nombreApk_X_Y_Z.apk
@@ -25,6 +24,22 @@ import java.net.URL;
 
 //EJEMPLO DE UNA URL CORRECTA
 //https://github.com/esteban1810/IntentoApp/raw/main/intentoapp_1_1_1.apk
+
+//Agregar
+
+//build.gradle PROJECT
+//allprojects {
+//    repositories {
+//    ...
+//    maven { url 'https://jitpack.io' }
+//    }
+//}
+
+//build.gradle MODULE
+//dependencies {
+//    ...
+//    implementation 'com.github.mfadi313:android-app-update-library:1.1.1'
+//}
 
 public class Actual extends AsyncTask<String, Void, String> {
     Context context;
@@ -68,7 +83,7 @@ public class Actual extends AsyncTask<String, Void, String> {
                 nombreApk = params[1];
                 auxX = Integer.parseInt(params[2]);
                 auxY = Integer.parseInt(params[3]);
-                auxZ = Integer.parseInt(params[4]);
+                auxZ = Integer.parseInt(params[4])+1;
 
                 base = url+"/"+nombreApk;
 

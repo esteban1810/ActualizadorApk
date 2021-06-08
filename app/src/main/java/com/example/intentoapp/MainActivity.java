@@ -3,10 +3,12 @@ package com.example.intentoapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +34,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button btnAut;
+    Button btnNom;
     TextView tv;
     EditText et;
     String x,y,z;
@@ -45,21 +49,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv = (TextView)findViewById(R.id.textView);
         et = (EditText)findViewById(R.id.editText);
-
+        btnAut = (Button)findViewById(R.id.btnAct);
+        btnNom = (Button)findViewById(R.id.btnNom);
 //        setxyz();
     }
 
 
     public void actualizacionAut(View view){
-        Actual act = new Actual(MainActivity.this);
-        setXYZ(tv.getText().toString());
-        act.execute("https://github.com/esteban1810/IntentoApp/raw/main","intentoapp",x,y,z);
+//        btnAut.setEnabled(false);
+        btnAut.setActivated(false);
+//        Actual act = new Actual(MainActivity.this);
+//        setXYZ(tv.getText().toString());
+//        act.execute("https://github.com/esteban1810/IntentoApp/raw/main","intentoapp",x,y,z);
+//        btnAut.setEnabled(true);
     }
 
     public void actualizacionPorNombre(View view){
+        btnNom.setEnabled(false);
         Actual act = new Actual(MainActivity.this);
         setXYZ(et.getText().toString().trim());
         act.execute("https://github.com/esteban1810/IntentoApp/raw/main","intentoapp_"+x+"_"+y+"_"+z);
+        btnNom.setEnabled(true);
     }
 
 
